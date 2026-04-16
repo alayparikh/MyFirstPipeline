@@ -1,15 +1,49 @@
 # MyFirstPipeline
 
 [![CI](https://github.com/alay/MyFirstPipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/alay/MyFirstPipeline/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/alay/MyFirstPipeline/branch/main/graph/badge.svg)](https://codecov.io/gh/alay/MyFirstPipeline)
 
-A basic CI/CD pipeline demonstration project showcasing automated workflows using GitHub Actions.
+A comprehensive CI/CD pipeline demonstration project showcasing automated testing, code coverage, and Blue/Green deployment using GitHub Actions.
+
+## Project Structure
+
+```
+MyFirstPipeline/
+├── .github/
+│   └── workflows/
+│       └── ci.yml          # GitHub Actions CI/CD pipeline
+├── src/
+│   └── calculator.py       # Sample Python module
+├── tests/
+│   └── test_calculator.py  # Unit tests
+├── requirements.txt        # Python dependencies
+└── README.md               # Project documentation
+```
 
 ## Features
 
 - Automated CI/CD pipeline triggered on push and pull requests
 - Runs on Ubuntu latest environment
-- Simple build and test simulation
+- **Automated Testing**: Unit tests using pytest
+- **Code Coverage**: Coverage reporting with pytest-cov and Codecov integration
+- **Code Quality**: Linting with flake8 for code style and error checking
 - **Blue/Green Deployment**: Zero-downtime deployment strategy that alternates between two identical environments
+
+## Testing and Code Coverage
+
+This project includes comprehensive automated testing:
+
+- **Unit Tests**: Written with pytest, covering core functionality
+- **Coverage Reporting**: Generates coverage reports showing which lines of code are tested
+- **Codecov Integration**: Uploads coverage data to Codecov for detailed analysis and badges
+
+### Running Tests Locally
+
+1. Install dependencies: `pip install -r requirements.txt`
+2. Run tests: `pytest`
+3. Run with coverage: `pytest --cov=src --cov-report=html`
+
+Coverage reports are automatically generated in CI and uploaded to Codecov.
 
 ## Blue/Green Deployment
 
