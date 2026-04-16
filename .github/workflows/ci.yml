@@ -15,3 +15,42 @@ jobs:
 
     - name: Run a one-line script
       run: echo Hello, world!
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Determine target environment
+      id: env
+      run: |
+        # Simple logic: alternate based on run number or random
+        if [ $((GITHUB_RUN_NUMBER % 2)) -eq 0 ]; then
+          echo "target=blue" >> $GITHUB_OUTPUT
+        else
+          echo "target=green" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Deploy to Blue Environment
+      if: steps.env.outputs.target == 'blue'
+      run: |
+        echo "Deploying application to Blue environment..."
+        # Simulate deployment steps here
+        echo "Deployment to Blue completed."
+
+    - name: Deploy to Green Environment
+      if: steps.env.outputs.target == 'green'
+      run: |
+        echo "Deploying application to Green environment..."
+        # Simulate deployment steps here
+        echo "Deployment to Green completed."
+
+    - name: Switch Traffic
+      run: |
+        echo "Switching traffic to ${{ steps.env.outputs.target }} environment..."
+        # Simulate traffic switch
+        echo "Traffic switched successfully."
