@@ -1,8 +1,5 @@
 # MyFirstPipeline
 
-[![CI](https://github.com/alay/MyFirstPipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/alay/MyFirstPipeline/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/alay/MyFirstPipeline/branch/main/graph/badge.svg)](https://codecov.io/gh/alay/MyFirstPipeline)
-
 A comprehensive CI/CD pipeline demonstration project showcasing automated testing, code coverage, and Blue/Green deployment using GitHub Actions.
 
 ## Project Structure
