@@ -1,4 +1,4 @@
-name: CI
+name: CI/CD Pipeline
 
 on:
   push:
@@ -22,9 +22,19 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    
+    # Improvement: Add dependency caching for speed
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
 
     - name: Lint with flake8
       run: |
+        echo "--- Running Flake8 Linting ---"
         flake8 src/ tests/ --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 src/ tests/ --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
@@ -44,6 +54,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    # Recommendation: Consider using an environment here for better security/secrets management
+    # environment: production 
 
     steps:
     - name: Checkout code
@@ -52,12 +64,14 @@ jobs:
     - name: Determine target environment
       id: env
       run: |
-        # Simple logic: alternate based on run number or random
+        # This logic remains as per original requirement, but it is fragile.
+        echo "Determining deployment target..."
         if [ $((GITHUB_RUN_NUMBER % 2)) -eq 0 ]; then
           echo "target=blue" >> $GITHUB_OUTPUT
         else
           echo "target=green" >> $GITHUB_OUTPUT
         fi
+        echo "Target determined: ${{ steps.env.outputs.target }}"
 
     - name: Deploy to Blue Environment
       if: steps.env.outputs.target == 'blue'
