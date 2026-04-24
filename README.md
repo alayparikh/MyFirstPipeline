@@ -1,4 +1,4 @@
-# 🚀 MyFirstPipeline
+# 🚀 MyFirstCI/CDPipeline
 
 [![CI Status](https://github.com/alay/MyFirstPipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/alay/MyFirstPipeline/actions/workflows/ci.yml)
 [![Code Coverage](https://codecov.io/gh/alay/MyFirstPipeline/branch/main/graph/badge.svg)](https://codecov.io/gh/alay/MyFirstPipeline)
