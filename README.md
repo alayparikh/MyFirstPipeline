@@ -1,7 +1,6 @@
 # 🚀 CI/CDPipeline
 
 [![CI Status](https://github.com/alay/MyFirstPipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/alay/MyFirstPipeline/actions/workflows/ci.yml)
-[![Code Coverage](https://codecov.io/gh/alay/MyFirstPipeline/branch/main/graph/badge.svg)](https://codecov.io/gh/alay/MyFirstPipeline)
 
 A complete, end-to-end CI/CD demonstration showcasing professional software deployment patterns. This repository automates **testing, quality assurance, and zero-downtime Blue/Green deployments** using GitHub Actions.
 
